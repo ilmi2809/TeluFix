@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Models\Report;
 use App\Models\News;
+use App\Models\Aspirasi;
+use App\Models\Notification;
 
 class DashboardController extends Controller
 {
@@ -16,7 +17,19 @@ class DashboardController extends Controller
         $inProgress = Report::where('status', 'dalam_pengerjaan')->count();
         $completed = Report::where('status', 'selesai')->count();
 
-        return view('pages.dashboard', compact('reports', 'unverified', 'inProgress', 'completed'));
+        // Tambahkan ini untuk mengambil notifikasi
+        $notifications = Notification::where('user_id', auth()->id())
+                                   ->orderBy('created_at', 'desc')
+                                   ->take(5)
+                                   ->get();
+
+        return view('pages.dashboard', compact(
+            'reports',
+            'unverified',
+            'inProgress',
+            'completed',
+            'notifications'
+        ));
     }
 
     public function berita()
@@ -30,9 +43,22 @@ class DashboardController extends Controller
         return view('pages.lapor');
     }
 
+    public function aspirasi()
+    {
+        return view('pages.aspirasi');
+    }
+
     public function histori()
     {
         $reports = Report::all();
         return view('pages.histori', compact('reports'));
+    }
+
+    public function histori_aspirasi()
+    {
+        $aspirasi = Aspirasi::where('user_id', auth()->id())
+                           ->orderBy('created_at', 'desc')
+                           ->get();
+        return view('pages.histori_aspirasi', compact('aspirasi'));
     }
 }

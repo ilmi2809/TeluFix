@@ -3,13 +3,9 @@
 @section('content')
     <div class="main-content">
         <div class="news-container">
-            <h2>Berita</h2>
+            <h2><b>Berita</b></h2>
 
-            <!-- December 25 Section -->
-            <div class="date-header">25 Desember 2024</div>
-            
             @foreach($news as $item)
-            <!-- News Card -->
             <div class="news-card">
                 <div class="news-content">
                     <img src="{{ $item->gambar }}" alt="Parkiran Asrama" class="news-image">

@@ -21,17 +21,13 @@ class HistoryController extends Controller
                             ->orderBy('created_at', 'desc')
                             ->get();
 
-            // Debug untuk melihat data
-            // dd($reports);
 
             return view('histori', ['reports' => $reports]);
-            // atau jika view di folder pages:
-            // return view('pages.histori', ['reports' => $reports]);
 
         } catch (\Exception $e) {
-            // Log error jika ada
             \Log::error($e->getMessage());
             return view('histori', ['reports' => collect([])]);
         }
     }
+
 }

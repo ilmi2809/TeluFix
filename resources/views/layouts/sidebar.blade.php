@@ -1,4 +1,5 @@
-<div class="sidebar">
+<div class="sidebar d-flex flex-column h-100">
+    <div class="flex-grow-1">
         <div class="sidebar-logo">
             <img src="{{ asset('images/logo.png') }}" alt="UFix Logo">
         </div>
@@ -18,37 +19,44 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('lapor') }}">
                     <i class='bx bx-file'></i>
-                    Lapor
+                    Tambah Lapor
+                    <span class="notification-dot"></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('aspirasi') }}">
+                    <i class='bx bx-file'></i>
+                    Tambah Aspirasi
                     <span class="notification-dot"></span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('histori') }}">
                     <i class='bx bx-history'></i>
-                    History
+                    Histori Lapor
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class='bx bx-cog'></i>
-                    Settings
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-danger" href="#">
-                    <i class='bx bx-log-out'></i>
-                    Logout
+                <a class="nav-link" href="{{ route('histori_aspirasi') }}">
+                    <i class='bx bx-history'></i>
+                    Histori Aspirasi
                 </a>
             </li>
         </ul>
-        <!-- User Profile -->
-        <a href="{{ route('profile') }}">
-            <div class="user-profile">
-                <img src="https://via.placeholder.com/32" alt="User Avatar">
-                <div class="user-info">
-                    <p class="name">Ilmi Syahbana Hasanudin</p>
-                    <p class="email">ilmisyahbana@gmail.com</p>
+    </div>
+
+    <!-- User Profile di bagian bawah -->
+    <div class="user-profile mt-auto p-3">
+        <a href="{{ route('profile') }}" class="text-decoration-none">
+            <div class="d-flex align-items-center">
+                <img src="{{ asset('storage/assets/images/' . auth()->user()->foto) }}"
+                     alt="User Avatar"
+                     class="profile-image">
+                <div class="user-info ms-3">
+                    <p class="name mb-0">{{ auth()->user()->name }}</p>
+                    <small class="email text-muted">{{ auth()->user()->email }}</small>
                 </div>
             </div>
         </a>
     </div>
+</div>

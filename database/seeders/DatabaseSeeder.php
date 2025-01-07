@@ -12,4 +12,11 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class
         ]);
     }
+
+    public function up()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('foto')->nullable()->after('password');
+        });
+    }
 }
