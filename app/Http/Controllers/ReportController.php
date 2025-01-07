@@ -8,8 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'jenis_masalah' => 'required',
             'deskripsi' => 'required',
@@ -32,7 +38,7 @@ class ReportController extends Controller
         if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/reports', $filename);
+            $file->storeAs('reports', $filename, 'public');
             $report->gambar = $filename;
         }
 

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Models\Report; 
+use App\Models\Report;
+use App\Models\News;
 
 class DashboardController extends Controller
 {
@@ -20,7 +21,8 @@ class DashboardController extends Controller
 
     public function berita()
     {
-        return view('pages.berita');
+        $news = News::all();
+        return view('pages.berita', compact('news'));
     }
 
     public function lapor()
@@ -30,6 +32,7 @@ class DashboardController extends Controller
 
     public function histori()
     {
-        return view('pages.histori');
+        $reports = Report::all();
+        return view('pages.histori', compact('reports'));
     }
 }

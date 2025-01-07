@@ -42,11 +42,13 @@
             </li>
         </ul>
         <!-- User Profile -->
-        <div class="user-profile">
-            <img src="https://via.placeholder.com/32" alt="User Avatar">
-            <div class="user-info">
-                <p class="name">Ilmi Syahbana Hasanudin</p>
-                <p class="email">ilmisyahbana@gmail.com</p>
+        <a href="{{ route('profile') }}">
+            <div class="user-profile">
+                <img src="https://via.placeholder.com/32" alt="User Avatar">
+                <div class="user-info">
+                    <p class="name">Ilmi Syahbana Hasanudin</p>
+                    <p class="email">ilmisyahbana@gmail.com</p>
+                </div>
             </div>
-        </div>
+        </a>
     </div>

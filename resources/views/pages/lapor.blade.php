@@ -25,25 +25,25 @@
                             <label class="form-check-label" for="kerusakan">Kerusakan</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="masalah" id="kehilangan">
+                            <input class="form-check-input" type="radio" name="jenis_masalah" value="kehilangan" id="kehilangan">
                             <label class="form-check-label" for="kehilangan">
                                 Kehilangan
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="masalah" id="kebersihan">
+                            <input class="form-check-input" type="radio" name="jenis_masalah" value="kebersihan" id="kebersihan">
                             <label class="form-check-label" for="kebersihan">
                                 Kebersihan
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="masalah" id="pencahayaan">
+                            <input class="form-check-input" type="radio" name="jenis_masalah" value="pencahayaan" id="pencahayaan">
                             <label class="form-check-label" for="pencahayaan">
                                 Pencahayaan
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="masalah" id="lainnya">
+                            <input class="form-check-input" type="radio" name="jenis_masalah" value="lainnya" id="lainnya">
                             <label class="form-check-label" for="lainnya">
                                 Lainnya
                             </label>

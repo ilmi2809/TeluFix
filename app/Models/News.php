@@ -12,4 +12,10 @@ class News extends Model
         'gambar',
         'tanggal',
     ];
+    
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
 }
+
