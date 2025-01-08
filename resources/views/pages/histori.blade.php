@@ -65,18 +65,6 @@
                                     </form>
                                 </div>
                             </div>
-                            {{-- <div class="category-item">
-                                <div class="category-label">.</div>
-                                <div class="category-value">
-                                    <a href="{{ url('/lapor').'/edit/'.$item->id }}" class="btn btn-outline-secondary">Edit</a>
-
-                                    <form action="{{ url('/lapor').'/'.$item->id }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-secondary">Delete</button>
-                                    </form>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 @endforeach
