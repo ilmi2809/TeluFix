@@ -18,31 +18,37 @@ class AspirasiController extends Controller
         $request->validate([
             'jenis_masalah' => 'required',
             'deskripsi' => 'required',
-            'publikasi' => 'required',
+            'publikasi' => 'required|in:Bersedia,Tidak Bersedia',
             'gambar' => 'nullable|file|mimes:jpeg,png,jpg,mp4|max:51200'
         ]);
 
-        $aspirasi = new Aspirasi();
-        $aspirasi->user_id = Auth::id();
-        $aspirasi->jenis_masalah = $request->jenis_masalah;
-        $aspirasi->deskripsi = $request->deskripsi;
-        $aspirasi->publikasi = $request->publikasi;
+        try {
+            $aspirasi = new Aspirasi();
+            $aspirasi->user_id = Auth::id();
+            $aspirasi->jenis_masalah = $request->jenis_masalah;
+            $aspirasi->deskripsi = $request->deskripsi;
+            $aspirasi->publikasi = $request->publikasi;
 
-        if ($request->hasFile('gambar')) {
-            $file = $request->file('gambar');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('aspirasi', $filename, 'public');
-            $aspirasi->gambar = $filename;
+            if ($request->hasFile('gambar')) {
+                $file = $request->file('gambar');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('aspirasi', $filename, 'public');
+                $aspirasi->gambar = $filename;
+            }
+
+            $aspirasi->save();
+
+            return redirect()->route('histori_aspirasi')->with('success', 'Aspirasi berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                            ->withInput()
+                            ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-
-        $aspirasi->save();
-
-        return redirect()->route('histori')->with('success', 'Aspirasi berhasil ditambahkan!');
     }
 
     public function edit($id) {
         $aspirasi = Aspirasi::findOrFail($id);
-        return view('pages.aspirasi-edit', compact('aspirasi'));
+        return view('pages.aspirasi_edit', compact('aspirasi'));
     }
 
     public function update(Request $request, $id)
@@ -66,17 +72,6 @@ class AspirasiController extends Controller
         $aspirasi->deskripsi = $request->deskripsi;
         $aspirasi->publikasi = $request->publikasi;
 
-        if ($request->hasFile('gambar')) {
-            // Delete old image if exists
-            if ($aspirasi->gambar) {
-                Storage::disk('public')->delete('aspirasi/' . $aspirasi->gambar);
-            }
-
-            $file = $request->file('gambar');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('aspirasi', $filename, 'public');
-            $aspirasi->gambar = $filename;
-        }
 
         $aspirasi->save();
 

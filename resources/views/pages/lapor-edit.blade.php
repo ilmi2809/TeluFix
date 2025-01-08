@@ -54,7 +54,7 @@
 
                 <div class="mb-4">
                     <label class="form-label">Deskripsi Masalah</label>
-                    <textarea class="form-control" name="deskripsi" rows="5" required>{{ old('jenis_masalah') ?? $report->jenis_masalah }}</textarea>
+                    <textarea class="form-control" name="deskripsi" rows="5" required>{{ old('deskripsi') ?? $report->deskripsi }}</textarea>
                 </div>
 
                 <div class="row mb-4">

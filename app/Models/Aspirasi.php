@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aspirasi extends Model
 {
+    protected $table = 'aspirasi';
+
     protected $fillable = [
         'user_id',
         'jenis_masalah',
@@ -14,8 +16,9 @@ class Aspirasi extends Model
         'gambar'
     ];
 
-
-    protected $table = 'aspirasi';
+    protected $attributes = [
+        'publikasi' => 'Tidak Bersedia'  // default value
+    ];
 
     public function user()
     {

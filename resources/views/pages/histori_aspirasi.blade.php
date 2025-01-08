@@ -5,17 +5,6 @@
         <div class="history-container">
             <h2><b>History Aspirasi</b></h2>
 
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if($aspirasi->isEmpty())
-                <div class="alert alert-info">
-                    Belum ada aspirasi yang disubmit.
-                </div>
-            @else
                 @foreach ($aspirasi as $item)
                     <div class="history-card">
                         <div class="categories-grid" style="grid-template-columns: repeat(5, 1fr);">
@@ -57,7 +46,6 @@
                         </div>
                     </div>
                 @endforeach
-            @endif
         </div>
     </div>
 @endsection
